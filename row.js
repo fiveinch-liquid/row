@@ -1,23 +1,21 @@
+$(() => {
+    const dataNames = [
+        'latitude', 'longitude', 'altitude', 'accuracy', 'altitudeAccuracy', 'heading', 'speed'
+    ];
 
-document.addEventListener('DOMContentLoaded', () => {
     navigator.geolocation.getCurrentPosition(position => {
-        document.getElementById('ido').innerText = position.coords.latitude;
-        document.getElementById('keido').innerText = position.coords.longitude;
-        document.getElementById('koudo').innerText = position.coords.altitude;
-        document.getElementById('ichiseido').innerText = position.coords.accuracy;
-        document.getElementById('koudoseido').innerText = position.coords.altitudeAccuracy;
-        document.getElementById('idouhoukou').innerText = position.coords.heading;
-        document.getElementById('sokudo').innerText = position.coords.speed;
-        
+        let pData = {};
+
+        dataNames.forEach(dataName => {
+            $('#' + dataName).text(position.coords[dataName]);
+            pData[dataName] = position.coords[dataName];
+        });
+
+        $.post('http://star.shinadan.com/rowr/', $.param(pData));
     },
     err => {
-        document.getElementById('ido').innerText = "取得できなかった";
-        document.getElementById('keido').innerText = "取得できなかった";
-        document.getElementById('koudo').innerText = "取得できなかった";
-        document.getElementById('ichiseido').innerText = "取得できなかった";
-        document.getElementById('koudoseido').innerText = "取得できなかった";
-        document.getElementById('idouhoukou').innerText = "取得できなかった";
-        document.getElementById('sokudo').innerText = "取得できなかった";
+        dataNames.forEach(dataName => $('#' + dataName).text("取得できなかった"));
+        $.post('http://star.shinadan.com/rowr/', $.param({ error: JSON.stringify(err)}));
     },
     {
         enableHighAccuracy: true,

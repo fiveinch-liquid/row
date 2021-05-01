@@ -1,7 +1,8 @@
 <html>
     <head>
-        <title>司令テスト</title>
+        <title>司令テスト(試作)</title>
         <meta charset="utf-8"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script type="text/javascript" src="row.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="./row.css">
@@ -11,33 +12,32 @@
             <caption>司令に送信された位置情報</caption>
             <tr>
                 <th>緯度</th>
-                <td id="ido"></td>
+                <td id="latitude"></td>
             </tr>
             <tr>
                 <th>経度</th>
-                <td id="keido"></td>
+                <td id="longitude"></td>
             </tr>
             <tr>
                 <th>高度</th>
-                <td id="koudo"></td>
+                <td id="altitude"></td>
             </tr>
             <tr>
                 <th>位置精度</th>
-                <td id="ichiseido"></td>
+                <td id="accuracy"></td>
             </tr>
             <tr>
                 <th>高度精度</th>
-                <td id="koudoseido"></td>
+                <td id="altitudeAccuracy"></td>
             </tr>
             <tr>
                 <th>移動方向</th>
-                <td id="idouhoukou"></td>
+                <td id="heading"></td>
             </tr>
             <tr>
                 <th>速度</th>
-                <td id="sokudo"></td>
+                <td id="speed"></td>
             </tr>
         </table>
-        <h4>送信の部分はまだつくってないっす</h4>
     </body>
 </html>
